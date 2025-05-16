@@ -4,8 +4,8 @@
     {
         private static Random random = new();
         public const int MAXIMUM = 10;
-        public static int currentNumber = random.Next(MAXIMUM);
-        public static int nextNumber = random.Next(MAXIMUM);
+        public static int currentNumber = random.Next(1,MAXIMUM);
+        public static int nextNumber = random.Next(1,MAXIMUM);
         private static int pot = MAXIMUM;
 
         public static void Guess(bool higher)
@@ -29,13 +29,13 @@
 
         public static void Hint()
         {
-            double half = nextNumber / 2;
+            double half = (double)nextNumber / 2;
             if (half > currentNumber)
                 Console.WriteLine($"The current number is {currentNumber}," +
-                    $" the next is at least {(double)half}");
+                    $" the next is at least {half.ToString(".00")}");
             if (half < currentNumber)
                 Console.WriteLine($"The current number is {currentNumber}," +
-                    $" the next is at most {(double)half}");
+                    $" the next is at most {half.ToString(".00")}");
 
             pot--;
         }
