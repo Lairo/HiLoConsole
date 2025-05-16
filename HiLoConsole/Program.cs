@@ -4,41 +4,20 @@
     {
         static void Main(string[] args)
         {
-            Dog spot = new() { Age = 12, Name = "Spot" };
-            Dog larry = new() { Age = 7, Name = "Larry" };
-            Dog suzie = new() { Age = 4, Name = "Suzie" };
-
-            spot.TalkToMe();
-            larry.TalkToMe();
-            suzie.TalkToMe();
-            Console.WriteLine();
-
-            spot.Name = larry.Name;
-            larry.TalkToMe();
-            spot.TalkToMe();
-            Console.WriteLine();
-
-            spot = suzie;
-            Console.WriteLine();
-
-            suzie.TalkToMe();
-            spot.TalkToMe();
-            Console.WriteLine();
-
-            suzie.Name = "babe";
-            spot.TalkToMe();
-
-        }
-    }
-
-    public class Dog()
-    {
-        public string Name = "";
-        public int Age;
-
-        public void TalkToMe()
-        {
-            Console.WriteLine($"My name is {Name} and my age is {Age}. ");
+            Console.WriteLine("Welcome to HiLo.");
+            Console.WriteLine($"Guess numbers between 1 and {HiLoGame.MAXIMUM}.");
+            HiLoGame.Hint();
+            while(HiLoGame.GetPot() > 0)
+            {
+                Console.WriteLine("\nPress h for higher, l for lower, ? to buy a hint,");
+                Console.WriteLine($"or any other key to quit with {HiLoGame.GetPot()}.\n");
+                char key = Console.ReadKey(true).KeyChar;
+                if (key == 'h') HiLoGame.Guess(true);
+                else if (key == 'l') HiLoGame.Guess(false);
+                else if (key == '?') HiLoGame.Hint();
+                else return;
+            }
+            Console.WriteLine("The pot  is empty. Bye!");
         }
     }
 }
