@@ -11,8 +11,8 @@
         public static void Guess(bool higher)
         {
 
-            if ((higher == true && nextNumber >= currentNumber) ||
-                (higher == false && nextNumber <= currentNumber))
+            if ((higher && nextNumber >= currentNumber) ||
+                (!higher && nextNumber <= currentNumber))
             {
                 Console.WriteLine("\tYou guessed right!");
                 pot++;
